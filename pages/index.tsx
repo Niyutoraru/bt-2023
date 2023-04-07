@@ -18,7 +18,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Heading>LAYOUT</Heading>
+        {/* <Heading>LAYOUT</Heading> */}
+        <h1 className="text-4xl font-extrabold">LAYOUT</h1>
         <Container />
         <Cards />
       </>
@@ -29,11 +30,16 @@ export default function Home() {
 function Container() {
   return (
     <>
-      <p className="mx-auto max-w-2xl text-center text-[clamp(1rem,_5vw,_2rem)]">
-        Responsive layout with <Bold>Flexbox</Bold>, <Bold>CSS Grid</Bold>,{" "}
-        <Bold>Media queries</Bold>, <Bold>Container queries</Bold> & many more!
-      </p>
-      <MagicCard />
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(min(30rem,_100%),_1fr))] gap-4">
+        <span className="flex items-center justify-center">
+          <p className="text-[clamp(1rem,_5vw,_2rem)]">
+            Responsive layout with <Bold>Flexbox</Bold>, <Bold>CSS Grid</Bold>,{" "}
+            <Bold>Media queries</Bold>, <Bold>Container queries</Bold> & many
+            more!
+          </p>
+        </span>
+        <MagicCard />
+      </div>
     </>
   );
 }
@@ -45,19 +51,14 @@ function MagicCard() {
         <div
           className={tailwindClasses(
             "grid grid-cols-1 grid-rows-[1fr_0.5fr] p-4 text-neutral-100",
-            prefix("@sm", "grid-cols-4 grid-rows-1 rounded bg-neutral-800"),
-            prefix(
-              "@lg",
-              "grid-cols-8 grid-rows-[repeat(6,_50px)] bg-transparent"
-            ),
-            prefix("@4xl", "grid-cols-12 grid-rows-[repeat(6,_50px)]")
+            "@sm:grid-cols-4 @sm:grid-rows-1 @sm:rounded @sm:bg-neutral-800",
+            "@xl:grid-cols-7 @xl:grid-rows-4 @xl:bg-transparent"
           )}
         >
           <Image
             className={tailwindClasses(
               "w-full rounded rounded-b-none",
-              prefix("@sm", "col-span-1"),
-              prefix("@lg", "col-span-2 col-start-3 row-start-1 rounded")
+              "@xl:col-span-3 @xl:col-start-2 @xl:row-span-3 @xl:row-start-1"
             )}
             src="https://source.unsplash.com/random/500x500?nature"
             alt="Random image"
@@ -67,13 +68,9 @@ function MagicCard() {
           />
           <div
             className={tailwindClasses(
-              "flex items-center justify-center rounded rounded-t-none bg-neutral-800 p-4 text-3xl font-bold",
-              prefix("@sm", "col-span-3"),
-              prefix(
-                "@lg",
-                "col-span-4 col-start-4 row-span-4 row-start-3 rounded"
-              ),
-              prefix("@4xl", "col-span-8 col-start-4 row-span-4 row-start-3")
+              "z-10 flex items-center justify-center rounded rounded-t-none bg-neutral-800 p-4 text-3xl font-bold",
+              "@sm:col-span-3",
+              "@xl:col-span-3 @xl:col-start-4 @xl:row-span-2 @xl:row-start-3"
             )}
           >
             <p>Magic card!</p>

@@ -1,6 +1,8 @@
 export function prefix(prefix: string, style: string) {
-  return style
+  const asd = style
     .split(" ")
     .map((e) => `${prefix}:${e}`)
     .join(" ");
+
+  return asd;
 }
